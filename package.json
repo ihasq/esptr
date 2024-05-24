@@ -1,5 +1,5 @@
 {
-  "name": "@ihasq/ptr",
+  "name": "esptr",
   "version": "0.0.1",
   "description": "Stupid Pointer For JavaScript",
   "main": "mod.js",
@@ -11,7 +11,8 @@
     "url": "git+https://github.com/ihasq/ptr.git"
   },
   "keywords": [
-    "javascript"
+    "javascript",
+    "typescript"
   ],
   "author": "ihasq",
   "license": "MIT",

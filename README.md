@@ -1,4 +1,4 @@
-# @ihasq/ptr
+# esptr
 
 Stupid Pointer For JavaScript.
 
