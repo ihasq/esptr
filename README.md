@@ -7,14 +7,14 @@ Stupid Pointer For JavaScript.
 ```javascript
 import { $ } from "esptr";
 
-const counter = $(0); // create pointer
+using counter = $(0); // create pointer
 
 $[counter]; // 0
 
 $[counter]++;
 $[counter]; // 1
 
-const reference = $(counter); // create pointer of pointer
+using reference = $(counter); // create pointer of pointer
 
 $[reference]++;
 $[counter] // 2
