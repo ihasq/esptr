@@ -1,14 +1,14 @@
 {
   "name": "esptr",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Stupid Pointer For JavaScript",
-  "main": "mod.js",
+  "main": "mod.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ihasq/ptr.git"
+    "url": "git+https://github.com/ihasq/esptr.git"
   },
   "keywords": [
     "javascript",
@@ -17,7 +17,7 @@
   "author": "ihasq",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ihasq/ptr/issues"
+    "url": "https://github.com/ihasq/esptr/issues"
   },
-  "homepage": "https://github.com/ihasq/ptr#readme"
+  "homepage": "https://github.com/ihasq/esptr#readme"
 }
