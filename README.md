@@ -19,11 +19,4 @@ const reference = $(counter); // create pointer of pointer
 $[reference]++;
 $[counter] // 2
 
-const notValidAddress = counter.toString();
-
-$[notValidAddress]; // 2
-$[notValidAddress]; // undefined
-
-export { counter }
-
 ```

@@ -1,4 +1,4 @@
-const createNewAddress = () => {
+const createAddress = () => {
 
 }
 
@@ -9,46 +9,39 @@ const createNewAddress = () => {
  * @returns { number | BigInt }
  */
 
-const $ = new Proxy((initial, callback) => {
+const $ = new Proxy(Object.assign((initial, callback) => {
 
-	let buffer_address = createNewAddress();
+	let buffer_address = undefined;
+	let buffer_validationLimit = -1;
 
-	const ADDRESS = Object.defineProperties({}, {
+	return Object.defineProperties({}, {
 
 		toString: {
+
 			get() {
-				const PREV_ADDRESS = buffer_address;
-				buffer_address = createNewAddress();
-				return PREV_ADDRESS;
+				buffer_address = createAddress();
+				buffer_validationLimit = setTimeout(() => {
+					
+				});
+				return buffer_address;
 			}
+
 		}
 
-	});
-
-	Object.defineProperty($, ADDRESS, {
-		get() {
-			return initial
-		},
-		set(value) {
-			value === initial
-				? undefined
-				: callback?.({ address: ADDRESS, newValue: value, oldValue: initial })
-			return initial = value;
-		},
-	});
-
-	return ADDRESS;
+	});;
 
 }, {
+
+	isPointer(pointer) {
+
+	}
+
+}), {
 
 	get(t, prop) {
 
 	}
 
 });
-
-$.isPointer = (pointer) => {
-	
-}
 
 export { $ }
