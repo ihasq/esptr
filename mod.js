@@ -1,4 +1,6 @@
-let buffer_next_address = 0;
+const createNewAddress = () => {
+
+}
 
 /**
  * 
@@ -7,9 +9,21 @@ let buffer_next_address = 0;
  * @returns { number | BigInt }
  */
 
-const $ = (initial, callback) => {
+const $ = new Proxy((initial, callback) => {
 
-	const ADDRESS = buffer_next_address;
+	let buffer_address = createNewAddress();
+
+	const ADDRESS = Object.defineProperties({}, {
+
+		toString: {
+			get() {
+				const PREV_ADDRESS = buffer_address;
+				buffer_address = createNewAddress();
+				return PREV_ADDRESS;
+			}
+		}
+
+	});
 
 	Object.defineProperty($, ADDRESS, {
 		get() {
@@ -23,10 +37,18 @@ const $ = (initial, callback) => {
 		},
 	});
 
-	return buffer_next_address = buffer_next_address == Number.MAX_SAFE_INTEGER
+	return ADDRESS;
 
-		? BigInt(buffer_next_address)
-		: buffer_next_address++
+}, {
+
+	get(t, prop) {
+
+	}
+
+});
+
+$.isPointer = (pointer) => {
+	
 }
 
 export { $ }
