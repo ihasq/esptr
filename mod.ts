@@ -1,5 +1,3 @@
-type ESPointer = symbol
-
 const PUBLISHED_PTR: ESPointer[] = [];
 
 const $ = Object.assign((initial: any, callback?: Function): ESPointer => {
