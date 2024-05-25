@@ -1,22 +1,26 @@
 <div align=center>
-	<h1><i>>> esptr >></i></h1>
-Stupid Pointer For JavaScript.
+	<i>
+		<h1>>> esptr >></h1>
+		Stupid Pointer For JavaScript.
+	</i>
 </div>
 
 ### Usage
 ```javascript
-import { $ } from "esptr";
+import { $ } from "https://esm.sh/esptr";
 
-using counter = $(0); // create pointer
+const counter = $(0); // create pointer
 
 $[counter]; // 0
 
 $[counter]++;
 $[counter]; // 1
 
-using reference = $(counter); // create pointer of pointer
+const reference = $(counter); // create pointer of pointer
 
 $[reference]++;
 $[counter] // 2
+
+delete $[counter];
 
 ```
