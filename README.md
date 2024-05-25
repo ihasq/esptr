@@ -21,6 +21,6 @@ const reference = $(counter); // create pointer of pointer
 $[reference]++;
 $[counter] // 2
 
-delete $[counter];
-
 ```
+
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/edit/stackblitz-starters-puc6j2?file=index.ts)
