@@ -1,10 +1,24 @@
 const PUBLISHED_PTR: ESPointer[] = [];
 
-const $ = Object.assign((initial: any, callback?: Function): ESPointer => {
+const $ = Object.assign((initial: any, callback?: Function): any => {
 
-	const PTR: ESPointer = Symbol("address");
+	const PTR = Symbol("address");
 
-	PUBLISHED_PTR.push(PTR);
+	const WEAK_PTR: ESPointer = Object.defineProperties({
+	
+		toString() {
+			return PTR
+		},
+		[Symbol.dispose]() {
+			
+		}
+	
+	}, {
+		toString: {},
+		[Symbol.dispose]: {}
+	})
+
+	PUBLISHED_PTR.push(WEAK_PTR);
 
 	const PUBLISHED_PTR_INCLUDES_INITIAL = PUBLISHED_PTR.includes(initial);
 
@@ -33,7 +47,7 @@ const $ = Object.assign((initial: any, callback?: Function): ESPointer => {
 		}
 	})
 
-	return PTR;
+	return WEAK_PTR;
 
 }, {
 

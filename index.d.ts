@@ -1,1 +1,3 @@
-type ESPointer = symbol
+interface ESPointer {
+	toString(): symbol;
+}

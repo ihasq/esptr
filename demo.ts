@@ -1,6 +1,6 @@
 import { $ } from "./mod.ts";
 
-const counter = $(0);
+using counter = $(0);
 
 console.log($[counter]);
 
