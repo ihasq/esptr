@@ -22,7 +22,7 @@ const $ = Object.assign((initial: any, callback?: Function): any => {
 
 	const PUBLISHED_PTR_INCLUDES_INITIAL = PUBLISHED_PTR.includes(initial);
 
-	Object.defineProperty($, PTR, {
+	const PROPERTY = {
 
 		get(): any {
 			return PUBLISHED_PTR_INCLUDES_INITIAL? $[initial] : initial;
@@ -44,8 +44,13 @@ const $ = Object.assign((initial: any, callback?: Function): any => {
 				return initial = value;
 			}
 
-		}
-	})
+		},
+
+		enumerable: false
+	}
+
+	Object.defineProperty($, PTR, PROPERTY);
+	Object.defineProperty(window, PTR, PROPERTY);
 
 	return WEAK_PTR;
 
