@@ -1,6 +1,6 @@
 import { $ } from "./mod.ts";
 
-using counter = $(0);
+const counter = $(0);
 
 console.log($[counter]);
 
@@ -8,8 +8,8 @@ $[counter]++;
 
 console.log($[counter]);
 
-const ref = $(counter);
+const ref = counter.fork();
 
 $[ref]++
 
-console.log($[counter])
+console.log($[ref])

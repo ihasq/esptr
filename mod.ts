@@ -1,65 +1,41 @@
-const PUBLISHED_PTR: ESPointer[] = [];
+const $ = (value: any, setterFn = x => x): ESPointer => {
 
-const $ = Object.assign((initial: any, callback?: Function): any => {
-
-	const PTR = Symbol("address");
-
-	const WEAK_PTR: ESPointer = Object.defineProperties({
-	
-		toString() {
-			return PTR
-		},
-		[Symbol.dispose]() {
-			
-		}
-	
-	}, {
-		toString: {},
-		[Symbol.dispose]: {}
-	})
-
-	PUBLISHED_PTR.push(WEAK_PTR);
-
-	const PUBLISHED_PTR_INCLUDES_INITIAL = PUBLISHED_PTR.includes(initial);
-
-	const PROPERTY = {
-
-		get(): any {
-			return PUBLISHED_PTR_INCLUDES_INITIAL? $[initial] : initial;
-		},
-
-		set(value: any): any {
-
-			if(PUBLISHED_PTR_INCLUDES_INITIAL) {
-				return $[initial] = value;
-			} else {
-				value === initial
-					? undefined
-					: callback?.({
-						newValue: value,
-						oldValue: initial,
-						pointer: PTR
-					});
-	
-				return initial = value;
+	const
+		BASE_SYMBOL = Symbol(performance.now()),
+		WATCHER_CALLBACKS = [],
+		GETTER_FN = {
+			get() {
+				return value;
 			}
+		}
+	;
 
+	Object.defineProperty(window, BASE_SYMBOL, GETTER_FN);
+
+	Object.defineProperty($, BASE_SYMBOL, {
+		set(newValue) {
+			WATCHER_CALLBACKS.forEach(x => x ? x(newValue) : undefined);
+			value = setterFn(newValue);
+			return true;
 		},
+		...GETTER_FN,
+	});
 
-		enumerable: false
+	return {
+		toString(): symbol {
+			return BASE_SYMBOL;
+		},
+		watch(callbackFn: function): ESPointer {
+			WATCHER_CALLBACKS.push(callbackFn);
+			return this;
+		},
+		into(transformerFn: function): ESPointer {
+			return 
+		},
+		fork(): ESPointer {
+			return $(value);
+		},
 	}
-
-	Object.defineProperty($, PTR, PROPERTY);
-	Object.defineProperty(window, PTR, PROPERTY);
-
-	return WEAK_PTR;
-
-}, {
-
-	isPointer(pointer: ESPointer): boolean {
-		return PUBLISHED_PTR.includes(pointer)
-	}
-
-});
+};
 
 export { $ }
