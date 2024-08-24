@@ -1,3 +1,7 @@
+interface ESPointer {
+	toString(): symbol;
+}
+
 const $ = (
 	value: any,
 	setterFn: Function = x => x
