@@ -1,5 +1,7 @@
 interface ESPointer {
 	toString(): symbol;
+	watch(): ESPointer;
+	fork(): ESPointer;
 }
 
 const $ = (
@@ -38,11 +40,11 @@ const $ = (
 			WATCHER_CALLBACKS.push(callbackFn);
 			return this;
 		},
-		into(
-			transformerFn: Function
-		): ESPointer {
-			return this.fork()
-		},
+		// into(
+		// 	transformerFn: Function
+		// ): ESPointer {
+		// 	return this.fork()
+		// },
 		// to(
 		// 	destination: number,
 		// 	duration?: number = 1000,
