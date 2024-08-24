@@ -39,27 +39,27 @@ const $ = (
 		): ESPointer {
 			return this.fork()
 		},
-		to(
-			destination: number,
-			duration?: number = 1000,
-			type: string
-		): ESPointer {
+		// to(
+		// 	destination: number,
+		// 	duration?: number = 1000,
+		// 	type: string
+		// ): ESPointer {
 
-			const
-				TIMESTAMP = performance.now(),
-				transformerFn = () => {
-					CURRENT_TIMESTAMP = performance.now();
-				}
-			;
+		// 	const
+		// 		TIMESTAMP = performance.now(),
+		// 		transformerFn = () => {
+		// 			CURRENT_TIMESTAMP = performance.now();
+		// 		}
+		// 	;
 
-			let CURRENT_TIMESTAMP;
+		// 	let CURRENT_TIMESTAMP;
 
-			switch(true) {
-				case "requestAnimationFrame" in window: {
-					requestAnimationFrame(transformerFn(requestAnimationFrame));
-				};
-			}
-		},
+		// 	switch(true) {
+		// 		case "requestAnimationFrame" in window: {
+		// 			requestAnimationFrame(transformerFn(requestAnimationFrame));
+		// 		};
+		// 	}
+		// },
 		fork(): ESPointer {
 			return $(value);
 		},
