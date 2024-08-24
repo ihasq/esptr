@@ -6,12 +6,12 @@ interface ESPointer {
 
 const $ = (
 	value: any,
-	setterFn: Function = x => x
+	setterFn: Function = (x: any) => x
 ): ESPointer => {
 
 	const
 		BASE_SYMBOL = Symbol(performance.now()),
-		WATCHER_CALLBACKS = [],
+		WATCHER_CALLBACKS: Function[] = [],
 		GETTER_FN = {
 			get() {
 				return value;
@@ -23,7 +23,7 @@ const $ = (
 
 	Object.defineProperty($, BASE_SYMBOL, {
 		set(newValue) {
-			WATCHER_CALLBACKS.forEach(x => x ? x(newValue) : undefined);
+			WATCHER_CALLBACKS.forEach((x: Function) => x ? x(newValue) : undefined);
 			value = setterFn(newValue);
 			return true;
 		},
@@ -34,10 +34,10 @@ const $ = (
 		toString(): symbol {
 			return BASE_SYMBOL;
 		},
-		watch(
-			callbackFn: Function
-		): ESPointer {
-			WATCHER_CALLBACKS.push(callbackFn);
+		watch(callbackFn?: Function): ESPointer {
+			if(callbackFn) {
+				WATCHER_CALLBACKS.push(callbackFn);
+			}
 			return this;
 		},
 		// into(
