@@ -1,4 +1,7 @@
-const $ = (value: any, setterFn: Function = x => x): ESPointer => {
+const $ = (
+	value: any,
+	setterFn: Function = x => x
+): ESPointer => {
 
 	const
 		BASE_SYMBOL = Symbol(performance.now()),
@@ -25,12 +28,37 @@ const $ = (value: any, setterFn: Function = x => x): ESPointer => {
 		toString(): symbol {
 			return BASE_SYMBOL;
 		},
-		watch(callbackFn: Function): ESPointer {
+		watch(
+			callbackFn: Function
+		): ESPointer {
 			WATCHER_CALLBACKS.push(callbackFn);
 			return this;
 		},
-		into(transformerFn: Function): ESPointer {
-			return 
+		into(
+			transformerFn: Function
+		): ESPointer {
+			return this.fork()
+		},
+		to(
+			destination: number,
+			duration?: number = 1000,
+			type: string
+		): ESPointer {
+
+			const
+				TIMESTAMP = performance.now(),
+				transformerFn = () => {
+					CURRENT_TIMESTAMP = performance.now();
+				}
+			;
+
+			let CURRENT_TIMESTAMP;
+
+			switch(true) {
+				case "requestAnimationFrame" in window: {
+					requestAnimationFrame(transformerFn(requestAnimationFrame));
+				};
+			}
 		},
 		fork(): ESPointer {
 			return $(value);
