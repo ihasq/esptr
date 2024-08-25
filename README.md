@@ -16,10 +16,7 @@ $[counter]; // 0
 $[counter]++;
 $[counter]; // 1
 
-const reference = $(counter); // create pointer of pointer
-
-$[reference]++;
-$[counter] // 2
+counter.watch(newValue => console.log(newValue));
 
 ```
 
