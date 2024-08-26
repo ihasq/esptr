@@ -2,6 +2,7 @@ interface ESPointer {
 	toString(): symbol;
 	watch(callbackFn: Function): ESPointer;
 	fork(): ESPointer;
+	PTR_IDENTIFIER: symbol;
 	// to(destination: number, duration?: number): ESPointer;
 };
 
