@@ -1,8 +1,16 @@
 interface ESPointer {
 	toString(): symbol;
-	watch(): ESPointer;
+	watch(callbackFn: Function): ESPointer;
 	fork(): ESPointer;
+	// to(destination: number, duration?: number): ESPointer;
 }
+
+const PTR_IDENTIFIER = Symbol("ESPTR");
+
+Object.defineProperty(window, PTR_IDENTIFIER, {
+	value: true,
+	configurable: false
+});
 
 const $ = (
 	value: any,
@@ -69,7 +77,9 @@ const $ = (
 		fork(): ESPointer {
 			return $(value);
 		},
+		PTR_IDENTIFIER
 	}
 };
 
 export { $ }
+
