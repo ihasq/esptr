@@ -3,7 +3,7 @@ interface ESPointer {
 	watch(callbackFn: Function): ESPointer;
 	fork(): ESPointer;
 	// to(destination: number, duration?: number): ESPointer;
-}
+};
 
 const PTR_IDENTIFIER = Symbol("ESPTR");
 
