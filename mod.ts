@@ -45,6 +45,7 @@ const $ = (
 		},
 		watch(callbackFn?: Function): ESPointer {
 			if(callbackFn) {
+				callbackFn(value);
 				WATCHER_CALLBACKS.push(callbackFn);
 			}
 			return this;
